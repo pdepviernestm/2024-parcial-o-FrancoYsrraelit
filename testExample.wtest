@@ -1,9 +1,74 @@
-import example.pepita
+import emociones.*
+import persona.*
+describe "test de emociones"{
+    test "todas las emociones pueden liberarse excepto por la tristeza"{
+        const evento = new Evento(impacto = 30, descripcion = "jugar al futbol")
 
-describe "group of tests for pepita" {
+        //emociones
+        const furia = new Furia(palabrotas = ["rayos","centellas"])
+        const alegria = new Alegria(intensidad = 41)
+        const tristeza = new Tristeza(intensidad = 60)
+        
 
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
-  }
+        assert.equals(true,furia.puedeLiberarse())
+        assert.equals(true,alegria.puedeLiberarse())
+        assert.equals(false,tristeza.puedeLiberarse())
+    }
 
+    test "a la alegria se le resta un impacto mas grande que su intensidad y queda su valor absoluto"{
+        const evento = new Evento(impacto = 50, descripcion = "jugar al basket")
+
+        valorParaIntensidad.valor(30)
+        //emociones
+        const alegria = new Alegria(intensidad = 40)
+        alegria.liberarse(evento)
+
+        assert.equals(10,alegria.intensidad())
+    }
+}
+
+
+describe "test de grupos"{
+    test "las intensidades de las emociones de las personas del grupo cambian excepto por la tristeza"{
+        const evento = new Evento(impacto = 30, descripcion = "jugar al futbol")
+
+        //emociones
+        const furia = new Furia(palabrotas = ["rayos","centellas"])
+        const alegria = new Alegria(intensidad = 41)
+        const tristeza = new Tristeza(intensidad = 60)
+ 
+        //personas
+        const persona1 = new Persona(edad = 21)
+        const persona2 = new Persona(edad = 24)
+        const persona3 = new Persona(edad = 25)
+
+        persona1.nuevaEmocion(furia)
+        persona2.nuevaEmocion(alegria)
+        persona3.nuevaEmocion(tristeza)
+
+        const grupo = new GrupoDePersonas(personas = [persona1, persona2, persona3])
+        grupo.vivirEventoGrupo(evento)
+
+        assert.equals(70,furia.intensidad())
+        assert.equals(11,alegria.intensidad())
+        assert.equals(60,tristeza.intensidad())
+    }
+
+    test "todas las personas del grupo estan por explotar"{
+        const evento = new Evento(impacto = 30, descripcion = "jugar al futbol")
+
+        //emociones
+        const furia = new Furia(palabrotas = ["rayos","centellas"])
+        const alegria = new Alegria(intensidad = 41)
+        const tristeza = new Tristeza(intensidad = 60)
+ 
+        //personas
+        const persona1 = new Persona(edad = 21, emociones = [furia])
+        const persona2 = new Persona(edad = 24, emociones = [alegria])
+        
+
+        const grupo = new GrupoDePersonas(personas = [persona1, persona2])
+
+        assert.equals(true,grupo.estanPorExplotar())
+    }
 }
