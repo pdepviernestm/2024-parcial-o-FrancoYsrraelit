@@ -17,7 +17,7 @@ class GrupoDePersonas{
 
 class Persona{
     const edad
-    const emociones
+    const emociones = []
 
     method esAdolescente(){
         return edad.between(12, 18)

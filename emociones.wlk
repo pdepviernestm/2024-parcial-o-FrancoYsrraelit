@@ -1,5 +1,10 @@
 import persona.*
 
+object valorParaIntensidad{
+    var property valor = 40 // valor modificable para verificar si una emocion es elevada o no
+    method valor() = valor
+}
+
 class Evento{
     const impacto
     method impacto() = impacto
@@ -13,11 +18,10 @@ class Evento{
 class Emocion{
     var property intensidad
 
-    const valorParaIntensidad
     var eventosExperimentados = 0
 
     method esElevada(){
-        return (intensidad > valorParaIntensidad) && self.otraCondicion()
+        return (intensidad > valorParaIntensidad.valor()) && self.otraCondicion()
     }
     method otraCondicion()
 

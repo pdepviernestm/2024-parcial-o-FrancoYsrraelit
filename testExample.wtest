@@ -5,9 +5,9 @@ describe "test de emociones"{
         const evento = new Evento(impacto = 30, descripcion = "jugar al futbol")
 
         //emociones
-        const furia = new Furia(valorParaIntensidad = 40, palabrotas = ["rayos","centellas"])
-        const alegria = new Alegria(intensidad = 41,valorParaIntensidad = 40)
-        const tristeza = new Tristeza(intensidad = 60,valorParaIntensidad = 40)
+        const furia = new Furia(palabrotas = ["rayos","centellas"])
+        const alegria = new Alegria(intensidad = 41)
+        const tristeza = new Tristeza(intensidad = 60)
         
 
         assert.equals(true,furia.puedeLiberarse())
@@ -18,8 +18,9 @@ describe "test de emociones"{
     test "a la alegria se le resta un impacto mas grande que su intensidad y queda su valor absoluto"{
         const evento = new Evento(impacto = 50, descripcion = "jugar al basket")
 
+        valorParaIntensidad.valor(30)
         //emociones
-        const alegria = new Alegria(intensidad = 40,valorParaIntensidad = 30)
+        const alegria = new Alegria(intensidad = 40)
         alegria.liberarse(evento)
 
         assert.equals(10,alegria.intensidad())
@@ -32,14 +33,18 @@ describe "test de grupos"{
         const evento = new Evento(impacto = 30, descripcion = "jugar al futbol")
 
         //emociones
-        const furia = new Furia(valorParaIntensidad = 40, palabrotas = ["rayos","centellas"])
-        const alegria = new Alegria(intensidad = 41,valorParaIntensidad = 40)
-        const tristeza = new Tristeza(intensidad = 60,valorParaIntensidad = 40)
+        const furia = new Furia(palabrotas = ["rayos","centellas"])
+        const alegria = new Alegria(intensidad = 41)
+        const tristeza = new Tristeza(intensidad = 60)
  
         //personas
-        const persona1 = new Persona(edad = 21, emociones = [furia])
-        const persona2 = new Persona(edad = 24, emociones = [alegria])
-        const persona3 = new Persona(edad = 25, emociones = [tristeza])
+        const persona1 = new Persona(edad = 21)
+        const persona2 = new Persona(edad = 24)
+        const persona3 = new Persona(edad = 25)
+
+        persona1.nuevaEmocion(furia)
+        persona2.nuevaEmocion(alegria)
+        persona3.nuevaEmocion(tristeza)
 
         const grupo = new GrupoDePersonas(personas = [persona1, persona2, persona3])
         grupo.vivirEventoGrupo(evento)
@@ -53,9 +58,9 @@ describe "test de grupos"{
         const evento = new Evento(impacto = 30, descripcion = "jugar al futbol")
 
         //emociones
-        const furia = new Furia(valorParaIntensidad = 40, palabrotas = ["rayos","centellas"])
-        const alegria = new Alegria(intensidad = 41,valorParaIntensidad = 40)
-        const tristeza = new Tristeza(intensidad = 60,valorParaIntensidad = 40)
+        const furia = new Furia(palabrotas = ["rayos","centellas"])
+        const alegria = new Alegria(intensidad = 41)
+        const tristeza = new Tristeza(intensidad = 60)
  
         //personas
         const persona1 = new Persona(edad = 21, emociones = [furia])
