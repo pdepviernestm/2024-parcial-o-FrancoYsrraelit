@@ -6,12 +6,12 @@ class GrupoDePersonas{
         personas.add(persona)
     }
 
-    method vivirEventoGrupo(evento){
-        personas.forEach({persona => persona.vivirEvento(evento)}) 
-    }
-
     method estanPorExplotar(){
         return personas.all({persona => persona.estaPorExplotar()})
+    }
+
+        method vivirEventoGrupo(evento){
+        personas.forEach({persona => persona.vivirEvento(evento)}) 
     }
 }
 

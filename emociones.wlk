@@ -2,7 +2,6 @@ import persona.*
 
 object valorParaIntensidad{
     var property valor = 40 // valor modificable para verificar si una emocion es elevada o no
-    method valor() = valor
 }
 
 class Evento{
