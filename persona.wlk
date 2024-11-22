@@ -10,7 +10,7 @@ class GrupoDePersonas{
         return personas.all({persona => persona.estaPorExplotar()})
     }
 
-        method vivirEventoGrupo(evento){
+    method vivirEventoGrupo(evento){
         personas.forEach({persona => persona.vivirEvento(evento)}) 
     }
 }
